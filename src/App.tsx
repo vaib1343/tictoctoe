@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {initialValue} from './Constant';
 import ListItem from './components/ListItem/ListItem';
+import Snackbar from 'react-native-snackbar';
 
 const App = () => {
   const [data, setData] = useState([...initialValue]);
@@ -23,50 +24,55 @@ const App = () => {
   };
 
   const checkWinner = (data: string[]) => {
+    let flag = false;
     if (data[0] !== 'nothing' && data[0] === data[1] && data[1] === data[2]) {
-      setWinner(data[0] === 'cross' ? 'X' : '0');
+      flag = true;
     } else if (
       data[3] !== 'nothing' &&
       data[3] === data[4] &&
       data[4] === data[5]
     ) {
-      setWinner(data[3] === 'cross' ? 'X' : '0');
+      flag = true;
     } else if (
       data[6] !== 'nothing' &&
       data[6] === data[7] &&
       data[7] === data[8]
     ) {
-      setWinner(data[6] === 'cross' ? 'X' : '0');
+      flag = true;
     } else if (
       data[0] !== 'nothing' &&
       data[0] === data[3] &&
       data[3] === data[6]
     ) {
-      setWinner(data[0] === 'cross' ? 'X' : '0');
+      flag = true;
     } else if (
       data[1] !== 'nothing' &&
       data[1] === data[4] &&
       data[4] === data[7]
     ) {
-      setWinner(data[1] === 'cross' ? 'X' : '0');
+      flag = true;
     } else if (
       data[2] !== 'nothing' &&
       data[2] === data[5] &&
       data[5] === data[8]
     ) {
-      setWinner(data[2] === 'cross' ? 'X' : '0');
+      flag = true;
     } else if (
       data[0] !== 'nothing' &&
       data[0] === data[4] &&
       data[4] === data[8]
     ) {
-      setWinner(data[0] === 'cross' ? 'X' : '0');
+      flag = true;
     } else if (
       data[2] !== 'nothing' &&
       data[2] === data[4] &&
       data[4] === data[6]
     ) {
-      setWinner(data[2] === 'cross' ? 'X' : '0');
+      flag = true;
+    }
+
+    if (flag) {
+      setWinner(data[0] === 'cross' ? 'X' : '0');
     }
   };
 
