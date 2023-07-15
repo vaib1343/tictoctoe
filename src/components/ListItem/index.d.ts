@@ -1,0 +1,3 @@
+interface ListItemProps {
+  value: string;
+}
